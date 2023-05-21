@@ -25,7 +25,7 @@ const useRoutes = () => {
     },
     {
       label: 'Sign out',
-      href: '#',
+      href: '/auth',
       onClick: async () => await signOut(),
       icon: HiArrowLeftOnRectangle
     }

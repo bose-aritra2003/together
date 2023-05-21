@@ -1,13 +1,15 @@
 # Together: Cultivating Conversations, Crafting Connections
 
-
+A real-time messaging web app that brings people together.
+<br />
 This web app is powered by the newest bleeding-edge [Next.js v13.4](https://nextjs.org/), delivering an unparalleled experience of speed, performance, and flexibility.
 
 ### Exciting Features:
 
+- **Sentiments:** A new way to express yourself, our app unveils the hidden emotions behind messages.
 - **Real-Time Messaging:** Stay connected instantly with real-time messaging.
 - **Sleek Design:** Enjoy a visually appealing interface with smooth animations.
-- **Anywhere, Anytime Access:** Seamlessly use the app on any device.
+- **Anywhere, Anytime Access:** Fully responsive, seamlessly use the app on any device.
 - **Easy and Secure Authentication:** Hassle-free login with Google or GitHub integration.
 - **Effortless Image Sharing:** Share images seamlessly using Cloudinary CDN.
 - **Streamlined Form Handling:** Error-free form submissions with validation and error handling.
@@ -33,7 +35,8 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and 
+load ***Inter***, a custom Google Font.
 
 
 ## Colour Palette

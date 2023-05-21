@@ -27,7 +27,7 @@ const ImageModal: FC<ImageModalProps> = ({ isOpen, onClose, src }) => {
           fill
           alt="image"
           placeholder="blur"
-          blurDataURL="/image-placeholder.webp"
+          blurDataURL="/placeholders/image-placeholder.webp"
           src={src}
           className="object-contain"
         />

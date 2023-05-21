@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import prisma from "@/app/libs/prismadb";
 import { pusherServer } from "@/app/libs/pusher";
+import {getSentimentScore} from "@/app/actions/getSentiment";
 
 export const POST = async (request: NextRequest) => {
   try {
@@ -16,9 +17,12 @@ export const POST = async (request: NextRequest) => {
       return new NextResponse('Unauthorized', { status: 401 });
     }
 
+    const sentimentScore = message ? await getSentimentScore(message) : null;
+
     const newMessage = await prisma.message.create({
       data: {
         body: message,
+        sentiment: sentimentScore,
         image: image,
         conversation: {
           connect: {

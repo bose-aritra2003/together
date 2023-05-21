@@ -30,9 +30,9 @@ const DesktopSidebar: FC<DesktopSidebarProps> = ({ currentUser }) => {
             className="flex flex-col items-center space-y-1"
           >
             {
-              routes.map((item) => (
+              routes.map((item, idx) => (
                 <DesktopItem
-                  key={item.label}
+                  key={idx}
                   href={item.href}
                   label={item.label}
                   icon={item.icon}

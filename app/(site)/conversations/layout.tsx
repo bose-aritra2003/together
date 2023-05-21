@@ -4,6 +4,26 @@ import ConversationList from "@/app/components/conversations/ConversationList";
 import getConversations from "@/app/actions/getConversations";
 import getUsers from "@/app/actions/getUsers";
 
+export const metadata = {
+  title: 'Together - Conversations',
+  description: 'Conversations page',
+  openGraph: {
+    type: 'website',
+    locale: 'en_IN',
+    url: 'https://together.vercel.app/conversations',
+    title: "Together - Conversations",
+    siteName: 'Together',
+    description: "Conversations page",
+    images: [
+      {
+        url: 'images/logo.svg',
+        width: 512,
+        height: 512,
+      }
+    ],
+  }
+}
+
 const ConversationsLayout = async ({ children } : { children: ReactNode }) => {
   const [
     users,

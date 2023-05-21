@@ -32,8 +32,8 @@ const AvatarGroup: FC<AvatarGroupProps> = ({ users = [] }) => {
               fill
               alt="avatar"
               placeholder="blur"
-              blurDataURL="/image-placeholder.webp"
-              src={user?.image || '/images/placeholder.png'}
+              blurDataURL="/placeholders/profile-placeholder.png"
+              src={user?.image || '/placeholders/profile-placeholder.png'}
             />
           </div>
         ))

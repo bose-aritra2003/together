@@ -9,6 +9,7 @@ import { format } from "date-fns";
 import Image from "next/image";
 import ImageModal from "@/app/components/modals/ImageModal";
 import SeenUsersModal from "@/app/components/modals/SeenUsersModal";
+import {getSentimentPath} from "@/app/actions/getSentiment";
 
 interface MessageBoxProps {
   data: FullMessageType;
@@ -34,13 +35,13 @@ const MessageBox: FC<MessageBoxProps> = ({ data, isLast }) => {
   );
 
   const body = clsx(
-    "flex flex-col gap-2",
+    "flex flex-col gap-2 w-2/3 sm:w-1/2",
     isOwnMessage && "items-end"
   );
 
   const message = clsx(
     "text-sm w-fit overflow-hidden",
-    isOwnMessage ? "bg-emerald-500 text-white" : "bg-gray-100",
+    isOwnMessage ? "bg-emerald-500 text-white" : "bg-gray-100 ",
     data.image ? "rounded-md p-0 bg-transparent" : "rounded-lg py-2 px-3"
   );
 
@@ -58,7 +59,12 @@ const MessageBox: FC<MessageBoxProps> = ({ data, isLast }) => {
             { format(new Date(data.createdAt), 'p') }
           </div>
         </div>
-        <div className={message}>
+
+        <div className={clsx(
+          "flex items-center gap-2",
+          isOwnMessage && "flex-row-reverse"
+        )}>
+          <div className={message}>
           <ImageModal
             src={data.image}
             isOpen={isImageModalOpen}
@@ -73,7 +79,7 @@ const MessageBox: FC<MessageBoxProps> = ({ data, isLast }) => {
                   width={128}
                   alt="image"
                   placeholder="blur"
-                  blurDataURL="/image-placeholder.webp"
+                  blurDataURL="/placeholders/image-placeholder.webp"
                   src={data.image}
                   className="object-cover cursor-pointer hover:scale-110 transition-all ease-in-out translate"
                 />
@@ -81,6 +87,18 @@ const MessageBox: FC<MessageBoxProps> = ({ data, isLast }) => {
 
             ) : (
               <div>{ data.body }</div>
+            )
+          }
+        </div>
+          {
+            data.sentiment !== null && (
+              <div className="w-6 h-6">
+                <Image
+                  src={getSentimentPath(data?.sentiment)}
+                  alt="sentiment"
+                  width={48} height={48}
+                />
+              </div>
             )
           }
         </div>

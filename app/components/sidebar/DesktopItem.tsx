@@ -10,6 +10,7 @@ interface DesktopItemProps {
   href: string;
   onClick?: () => void;
   active?: boolean;
+  key: number;
 }
 
 const DesktopItem: FC<DesktopItemProps> = (
@@ -18,7 +19,8 @@ const DesktopItem: FC<DesktopItemProps> = (
     icon: Icon,
     href,
     onClick,
-    active
+    active,
+    key
   }
 ) => {
   const handleClick = async () => {
@@ -28,7 +30,7 @@ const DesktopItem: FC<DesktopItemProps> = (
   };
 
   return (
-    <li onClick={handleClick}>
+    <li key={key} onClick={handleClick}>
       <Link
         href={href}
         className={clsx(

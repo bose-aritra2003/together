@@ -42,7 +42,7 @@ const Body: FC<BodyProps> = ({ initialMessages }) => {
         return [...current, message];
       });
 
-      bottomRef?.current?.scrollIntoView();
+      bottomRef?.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
     const updateMessageHandler = (newMessage: FullMessageType) => {

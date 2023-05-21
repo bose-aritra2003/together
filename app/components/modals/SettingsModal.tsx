@@ -50,7 +50,7 @@ const SettingsModal: FC<SettingsModalProps> = ({ isOpen, onClose, currentUser })
     setIsLoading(true);
     try {
       await axios.post('/api/settings', data);
-      toast.error("Saved details successfully");
+      toast.success("Saved details successfully");
       router.refresh();
       onClose();
     } catch (error: any) {
@@ -87,8 +87,10 @@ const SettingsModal: FC<SettingsModalProps> = ({ isOpen, onClose, currentUser })
                   <div className="relative inline-block rounded-full overflow-hidden h-12 w-12">
                     <Image
                       fill
+                      placeholder="blur"
+                      blurDataURL="/placeholders/image-placeholder.webp"
                       className="rounded-full"
-                      src={image || currentUser?.image || '/images/placeholder.png'}
+                      src={image || currentUser?.image || '/placeholders/profile-placeholder.png'}
                       alt="avatar"
                     />
                   </div>
