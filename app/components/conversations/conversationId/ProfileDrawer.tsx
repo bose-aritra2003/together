@@ -56,7 +56,7 @@ const ProfileDrawer: FC<ProfileDrawerProps> = ({isOpen, onClose, data}) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-gray-500 bg-opacity-75"/>
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-75"/>
           </Transition.Child>
           <div className="fixed inset-0 overflow-hidden">
             <div className="absolute inset-0 overflow-hidden">
@@ -125,8 +125,8 @@ const ProfileDrawer: FC<ProfileDrawerProps> = ({isOpen, onClose, data}) => {
                                     </dt>
                                     <dd className="mt-3 text-sm text-gray-900 flex flex-col space-y-4">
                                       {
-                                        data.users.map((user) => (
-                                          <div className="flex space-x-2 items-center">
+                                        data.users.map((user, idx) => (
+                                          <div className="flex space-x-2 items-center" key={idx}>
                                             <Avatar user={user} small noStatus/>
                                             <div>
                                               <p>{ user.name }</p>
