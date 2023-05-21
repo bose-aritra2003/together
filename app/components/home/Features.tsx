@@ -8,6 +8,7 @@ const Features = () => {
       {
         features.map(({ img, title, desc }, idx) => (
           <FeatureCard
+            key={idx}
             img={img}
             title={title}
             desc={desc}

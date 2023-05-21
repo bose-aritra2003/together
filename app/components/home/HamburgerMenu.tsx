@@ -33,8 +33,8 @@ export const HamburgerMenu = () => {
               <Menu.Items className="absolute right-0 mt-2 w-28 origin-top-right divide-y divide-gray-100 rounded-lg bg-gray-50 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 {
                   routes.map(({href, icon: Icon, label}, idx) => (
-                    <div className="p-1.5">
-                      <Menu.Item key={idx}>
+                    <div className="p-1.5" key={idx}>
+                      <Menu.Item>
                         <Link
                           href={href}
                           className="text-gray-900 hover:bg-emerald-100 hover:text-emerald-900 group flex w-full items-center justify-between rounded-md p-1.5"

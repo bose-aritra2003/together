@@ -30,7 +30,7 @@ const ProfileDrawer: FC<ProfileDrawerProps> = ({isOpen, onClose, data}) => {
 
   const title = useMemo(() => {
     return data.name || otherUser.name
-  }, []);
+  }, [data.name, otherUser.name]);
 
   const statusText = useMemo(() => {
     if (data.isGroup) {

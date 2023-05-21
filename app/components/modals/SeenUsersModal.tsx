@@ -23,8 +23,8 @@ const SeenUsersModal: FC<ConfirmModalProps> = ({ isOpen, onClose, users }) => {
         </dt>
         <dd className="mt-3 text-sm text-gray-900 flex flex-col space-y-3">
           {
-            users.map((user) => (
-              <div className="flex space-x-2 items-center">
+            users.map((user, idx) => (
+              <div className="flex space-x-2 items-center" key={idx}>
                 <Avatar user={ user } small noStatus/>
                 <div>
                   <p>{ user.name }</p>
