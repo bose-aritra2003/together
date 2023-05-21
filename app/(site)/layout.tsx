@@ -24,6 +24,18 @@ export const metadata = {
         height: 512,
       }
     ],
+  },
+  twitter: {
+    title: "Together - Home",
+    description: "Cultivating Conversations, Crafting Connections",
+    card: "summary_large_image",
+    images: [
+      {
+        url: 'images/logo.png',
+        width: 512,
+        height: 512,
+      }
+    ],
   }
 }
 
