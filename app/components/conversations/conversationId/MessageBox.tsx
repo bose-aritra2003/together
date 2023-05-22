@@ -1,22 +1,22 @@
 'use client';
 
-import { FullMessageType } from "@/app/types";
-import { FC, useState } from "react";
-import { useSession } from "next-auth/react";
+import {FullMessageType} from "@/app/types";
+import {FC, useState} from "react";
+import {useSession} from "next-auth/react";
 import clsx from "clsx";
 import Avatar from "@/app/components/avatars/Avatar";
-import { format } from "date-fns";
+import {format} from "date-fns";
 import Image from "next/image";
 import ImageModal from "@/app/components/modals/ImageModal";
 import SeenUsersModal from "@/app/components/modals/SeenUsersModal";
-import {getSentimentPath} from "@/app/actions/getSentiment";
+import Sentiment from "@/app/components/conversations/conversationId/Sentiment";
 
 interface MessageBoxProps {
   data: FullMessageType;
   isLast?: boolean;
 }
 
-const MessageBox: FC<MessageBoxProps> = ({ data, isLast }) => {
+const MessageBox: FC<MessageBoxProps> = ({data, isLast}) => {
   const session = useSession();
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [isSeenModalOpen, setIsSeenModalOpen] = useState(false);
@@ -41,22 +41,22 @@ const MessageBox: FC<MessageBoxProps> = ({ data, isLast }) => {
 
   const message = clsx(
     "text-sm w-fit overflow-hidden",
-    isOwnMessage ? "bg-emerald-500 text-white" : "bg-gray-100 ",
+    isOwnMessage ? "bg-emerald-500 text-white" : "bg-gray-100",
     data.image ? "rounded-md p-0 bg-transparent" : "rounded-lg py-2 px-3"
   );
 
   return (
     <div className={container}>
       <div className={avatar}>
-        <Avatar user={data.sender} />
+        <Avatar user={data.sender}/>
       </div>
       <div className={body}>
         <div className="flex items-center gap-1">
           <div className="text-sm text-gray-500">
-            { data.sender.name }
+            {data.sender.name}
           </div>
           <div className="text-xs text-gray-500">
-            { format(new Date(data.createdAt), 'p') }
+            {format(new Date(data.createdAt), 'p')}
           </div>
         </div>
 
@@ -65,42 +65,37 @@ const MessageBox: FC<MessageBoxProps> = ({ data, isLast }) => {
           isOwnMessage && "flex-row-reverse"
         )}>
           <div className={message}>
-          <ImageModal
-            src={data.image}
-            isOpen={isImageModalOpen}
-            onClose={() => setIsImageModalOpen(false)}
-          />
-          {
-            data.image ? (
-              <>
-                <Image
-                  onClick={() => setIsImageModalOpen(true)}
-                  height={128}
-                  width={128}
-                  alt="image"
-                  placeholder="blur"
-                  blurDataURL="/placeholders/image-placeholder.webp"
-                  src={data.image}
-                  className="object-cover cursor-pointer hover:scale-110 transition-all ease-in-out translate"
-                />
-              </>
+            <ImageModal
+              src={data.image}
+              isOpen={isImageModalOpen}
+              onClose={() => setIsImageModalOpen(false)}
+            />
+            {
+              data.image ? (
+                <>
+                  <Image
+                    onClick={() => setIsImageModalOpen(true)}
+                    height={128}
+                    width={128}
+                    alt="image"
+                    placeholder="blur"
+                    blurDataURL="/placeholders/image-placeholder.webp"
+                    src={data.image}
+                    className="object-cover cursor-pointer hover:scale-110 transition-all ease-in-out translate"
+                  />
+                </>
 
-            ) : (
-              <div>{ data.body }</div>
-            )
-          }
-        </div>
+              ) : (
+                <div>{data.body}</div>
+              )
+            }
+          </div>
           {
-            data.sentiment !== null && (
-              <div className="w-6 h-6">
-                <Image
-                  src={getSentimentPath(data?.sentiment)}
-                  alt="sentiment"
-                  width={48} height={48}
-                />
-              </div>
+            isLast && !data.image && (
+              <Sentiment message={data.body!}/>
             )
           }
+
         </div>
         <SeenUsersModal
           isOpen={isSeenModalOpen}

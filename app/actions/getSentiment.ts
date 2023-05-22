@@ -1,9 +1,8 @@
-import Sentiment from "sentiment";
+import sentiment from "@/app/libs/sentiment";
 
-export const getSentimentScore = async (phrase: string) => {
-  const sentiment = new Sentiment();
+export const getSentimentScore = (phrase: string) => {
   try {
-    const result = await sentiment.analyze(phrase);
+    const result = sentiment.analyze(phrase);
     return result.score;
   } catch (error: any) {
     return null

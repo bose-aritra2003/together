@@ -26,7 +26,7 @@ const Body: FC<BodyProps> = ({ initialMessages }) => {
 
   useEffect(() => {
     pusherClient.subscribe(conversationId);
-    bottomRef?.current?.scrollIntoView();
+    bottomRef?.current?.scrollIntoView({ behavior: 'smooth' });
 
     const messageHandler = (message: FullMessageType) => {
       //IIFE

@@ -65,13 +65,11 @@ const Header: FC<HeaderProps> = ({ conversation }) => {
             </div>
           </div>
         </div>
-        <div className="flex gap-x-2 items-center">
-          <HiEllipsisHorizontal
-            size={32}
-            onClick={() => setDrawerOpen(true)}
-            className="text-emerald-500 cursor-pointer transition-all ease-in-out hover:text-emerald-600"
-          />
-        </div>
+        <HiEllipsisHorizontal
+          size={32}
+          onClick={() => setDrawerOpen(true)}
+          className="text-emerald-500 cursor-pointer transition-all ease-in-out hover:text-emerald-600"
+        />
       </div>
     </>
 

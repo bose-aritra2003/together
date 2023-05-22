@@ -72,7 +72,6 @@ model Message {
     id        String   @id @default(auto()) @map("_id") @db.ObjectId
     body      String?
     image     String?
-    sentiment Int?
     createdAt DateTime @default(now())
 
     seenIds String[] @db.ObjectId
