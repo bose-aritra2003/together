@@ -6,3 +6,6 @@ html, body,
 :root {
     height: 100%;
 }
+::selection {
+    background-color: rgba(16, 185, 129, 0.4);
+}
