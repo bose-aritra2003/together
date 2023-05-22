@@ -70,6 +70,7 @@ const Body: FC<BodyProps> = ({ initialMessages }) => {
         messages.map((message, i) => (
           <MessageBox
             isLast={i === messages.length - 1}
+            isSecondLast={i === messages.length - 2}
             key={message.id}
             data={message}
           />

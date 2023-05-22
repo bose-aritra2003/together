@@ -14,9 +14,10 @@ import Sentiment from "@/app/components/conversations/conversationId/Sentiment";
 interface MessageBoxProps {
   data: FullMessageType;
   isLast?: boolean;
+  isSecondLast?: boolean;
 }
 
-const MessageBox: FC<MessageBoxProps> = ({data, isLast}) => {
+const MessageBox: FC<MessageBoxProps> = ({data, isLast, isSecondLast}) => {
   const session = useSession();
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [isSeenModalOpen, setIsSeenModalOpen] = useState(false);
@@ -91,7 +92,7 @@ const MessageBox: FC<MessageBoxProps> = ({data, isLast}) => {
             }
           </div>
           {
-            isLast && !data.image && (
+            (isLast || isSecondLast) && !data.image && (
               <Sentiment message={data.body!}/>
             )
           }
