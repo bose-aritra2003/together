@@ -1,15 +1,29 @@
 import Image from "next/image";
-import {getSentimentPath, getSentimentScore} from "@/app/actions/getSentiment";
+import sentiment from "@/app/libs/sentiment";
 
 interface SentimentProps {
   message: string;
 }
 
 const Sentiment = ({ message }: SentimentProps) => {
+  const getSentimentPath = (score: number) => {
+      if (score >= 2) {
+        return '/sentiments/happy.svg';
+      } else if (score >= 0) {
+        return '/sentiments/neutral.svg';
+      } else if (score >= -2) {
+        return '/sentiments/annoyed.svg';
+      } else if (score >= -4){
+        return '/sentiments/sad.svg';
+      } else {
+        return '/sentiments/angry.svg';
+      }
+  }
+
   return (
     <div className="w-6 h-6">
       <Image
-        src={getSentimentPath(getSentimentScore(message)!)}
+        src={getSentimentPath(sentiment.analyze(message).score)}
         alt="sentiment"
         width={48} height={48}
       />
