@@ -1,5 +1,4 @@
 import Image from "next/image";
-import clsx from "clsx";
 
 interface FeatureCardProps {
   img: string;
@@ -12,10 +11,10 @@ const FeatureCard = ({ img, title, desc, reverse }: FeatureCardProps) => {
   return (
     <>
       <div className="hidden sm:block">
-        <div className={clsx(
-            "p-5 flex justify-between items-center",
-            reverse ? 'flex-row-reverse' : 'flex-row'
-          )}
+        <div className={`
+            p-5 flex justify-between items-center
+            ${reverse ? 'flex-row-reverse' : 'flex-row'}
+          `}
         >
           <Image
             width={512} height={512}

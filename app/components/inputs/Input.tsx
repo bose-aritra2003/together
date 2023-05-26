@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import { FC } from "react";
 
@@ -37,11 +36,11 @@ const Input: FC<InputProps> = (
           autoComplete={id}
           disabled={disabled}
           { ...register(id, { required }) }
-          className={clsx(
-            `form-input block w-full rounded-lg border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 transition-all ease-in-out placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6`,
-            errors[id] && 'focus:ring-rose-500',
-            disabled && 'opacity-50 cursor-not-allowed'
-          )}
+          className={`
+            form-input block w-full rounded-lg border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 transition-all ease-in-out placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6
+            ${errors[id] && 'focus:ring-rose-500'}
+            ${disabled && 'opacity-50 cursor-not-allowed'}
+          `}
         />
       </div>
     </div>

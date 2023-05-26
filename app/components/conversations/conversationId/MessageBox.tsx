@@ -3,7 +3,6 @@
 import {FullMessageType} from "@/app/types";
 import {FC, useState} from "react";
 import {useSession} from "next-auth/react";
-import clsx from "clsx";
 import Avatar from "@/app/components/avatars/Avatar";
 import {format} from "date-fns";
 import Image from "next/image";
@@ -26,25 +25,25 @@ const MessageBox: FC<MessageBoxProps> = ({data, isLast, isSecondLast}) => {
   const seenList = (data.seen || []).filter((user) => user.email !== data?.sender?.email);
 
   // Defining the dynamic classes separately since there is a lot
-  const container = clsx(
-    "flex gap-3 p-4",
-    isOwnMessage && "justify-end"
-  );
+  const container = `
+    flex gap-3 p-4
+    ${isOwnMessage && "justify-end"}
+  `;
 
-  const avatar = clsx(
-    isOwnMessage && "order-2"
-  );
+  const avatar = `
+    ${isOwnMessage && "order-2"}
+  `;
 
-  const body = clsx(
-    "flex flex-col gap-2 w-2/3 sm:w-1/2",
-    isOwnMessage && "items-end"
-  );
+  const body = `
+    flex flex-col gap-2 w-2/3 sm:w-1/2
+    ${isOwnMessage && "items-end"}
+  `;
 
-  const message = clsx(
-    "text-sm w-fit overflow-hidden",
-    isOwnMessage ? "bg-emerald-500 text-white" : "bg-gray-100",
-    data.image ? "rounded-md p-0 bg-transparent" : "rounded-lg py-2 px-3"
-  );
+  const message = `
+    text-sm w-fit overflow-hidden
+    ${isOwnMessage ? "bg-emerald-500 text-white" : "bg-gray-100"}
+    ${data.image ? "rounded-md p-0 bg-transparent" : "rounded-lg py-2 px-3"}
+  `;
 
   return (
     <div className={container}>
@@ -60,11 +59,11 @@ const MessageBox: FC<MessageBoxProps> = ({data, isLast, isSecondLast}) => {
             {format(new Date(data.createdAt), 'p')}
           </div>
         </div>
-
-        <div className={clsx(
-          "flex items-center gap-2",
-          isOwnMessage && "flex-row-reverse"
-        )}>
+        <div className={`
+          flex items-center gap-2
+          ${isOwnMessage && "flex-row-reverse"}
+        `}
+        >
           <div className={message}>
             <ImageModal
               src={data.image}
@@ -96,7 +95,6 @@ const MessageBox: FC<MessageBoxProps> = ({data, isLast, isSecondLast}) => {
               <Sentiment message={data.body!}/>
             )
           }
-
         </div>
         <SeenUsersModal
           isOpen={isSeenModalOpen}

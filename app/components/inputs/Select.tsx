@@ -4,7 +4,6 @@ import { FC } from "react";
 import ReactSelect from "react-select";
 import { selectTheme, selectStyles } from "@/app/libs/react-select-config";
 import makeAnimated from 'react-select/animated';
-import clsx from "clsx";
 import Avatar from "@/app/components/avatars/Avatar";
 
 interface SelectProps {
@@ -32,10 +31,10 @@ const Select: FC<SelectProps> = (
         { label }
       </label>
       <div
-        className={clsx(
-        "mt-2",
-          disabled && "cursor-not-allowed"
-        )}
+        className={`
+          mt-2
+          ${disabled && "cursor-not-allowed"}
+        `}
       >
         <ReactSelect
           isMulti

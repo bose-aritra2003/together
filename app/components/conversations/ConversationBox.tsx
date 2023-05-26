@@ -4,7 +4,6 @@ import { FC, useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { format } from "date-fns";
 import { useSession } from "next-auth/react";
-import clsx from "clsx";
 import { FullConversationType } from "@/app/types";
 import useOtherUser from "@/app/hooks/useOtherUser";
 import Avatar from "@/app/components/avatars/Avatar";
@@ -62,10 +61,10 @@ const ConversationBox: FC<ConversationBoxProps> = ({ data, selected }) => {
   return (
     <div
       onClick={handleClick}
-      className={clsx(
-        "w-full relative flex items-center space-x-3 transition-all ease-in-out hover:bg-gray-100 rounded-lg cursor-pointer p-3",
-        selected ? "bg-gray-100" : "bg-white"
-      )}
+      className={`
+        w-full relative flex items-center space-x-3 transition-all ease-in-out hover:bg-gray-100 rounded-lg cursor-pointer p-3
+        ${selected ? "bg-gray-100" : "bg-white"}
+      `}
     >
       {
         data.isGroup ? (
@@ -89,10 +88,10 @@ const ConversationBox: FC<ConversationBoxProps> = ({ data, selected }) => {
             </p>
           </div>
           <p
-            className={clsx(
-              "truncate text-sm italic",
-              hasSeen ? "text-gray-500" : "text-gray-900 font-medium"
-            )}
+            className={`
+              truncate text-sm italic
+              ${hasSeen ? "text-gray-500" : "text-gray-900 font-medium"}
+            `}
           >
             { lastMessageText }
           </p>

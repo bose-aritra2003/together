@@ -3,7 +3,6 @@
 import { User } from "@prisma/client";
 import { FC } from "react";
 import Image from "next/image";
-import clsx from "clsx";
 import useOnlineList from "@/app/hooks/useOnlineList";
 
 interface AvatarProps {
@@ -20,10 +19,10 @@ const Avatar: FC<AvatarProps> = ({ user, small, noStatus }) => {
   return (
     <div className="relative">
       <div
-        className={clsx(
-          "relative inline-block rounded-full overflow-hidden",
-          small ? "h-8 w-8" : "h-11 w-11",
-        )}
+        className={`
+          relative inline-block rounded-full overflow-hidden
+          ${small ? "h-8 w-8" : "h-11 w-11"}
+        `}
       >
         <Image
           fill
@@ -36,10 +35,10 @@ const Avatar: FC<AvatarProps> = ({ user, small, noStatus }) => {
       {
         isOnline && (
           <span
-            className={clsx(
-              "absolute rounded-full bg-sky-500 ring-2 ring-white top-0 right-0 h-3 w-3",
-              noStatus ? "hidden" : "block"
-            )}
+            className={`
+              absolute rounded-full bg-sky-500 ring-2 ring-white top-0 right-0 h-3 w-3
+              ${noStatus ? "hidden" : "block"}
+            `}
           />
         )
       }
