@@ -102,90 +102,90 @@ const AuthForm = () => {
         }
       </h2>
       <div className="sm:mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-      <div className="px-4 py-8 sm:shadow sm:bg-white sm:rounded-lg sm:px-10">
+        <div className="px-4 py-8 sm:shadow sm:bg-white sm:rounded-lg sm:px-10">
 
-        {/* Authentication form */}
-        <form
-          className="space-y-6"
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          {variant === "register" && (
+          {/* Authentication form */}
+          <form
+            className="space-y-6"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            {variant === "register" && (
+              <Input
+                id="name"
+                label="Name"
+                register={register}
+                errors={errors}
+                disabled={isLoading}
+              />
+            )}
             <Input
-              id="name"
-              label="Name"
+              id="email"
+              label="Email address"
+              type="email"
               register={register}
               errors={errors}
               disabled={isLoading}
             />
-          )}
-          <Input
-            id="email"
-            label="Email address"
-            type="email"
-            register={register}
-            errors={errors}
-            disabled={isLoading}
-          />
-          <Input
-            id="password"
-            label="Password"
-            type="password"
-            register={register}
-            errors={errors}
-            disabled={isLoading}
-          />
-          <div>
-            <Button
-              fullWidth
-              type="submit"
+            <Input
+              id="password"
+              label="Password"
+              type="password"
+              register={register}
+              errors={errors}
               disabled={isLoading}
+            />
+            <div>
+              <Button
+                fullWidth
+                type="submit"
+                disabled={isLoading}
+              >
+                {isLoading && <Spinner/>}
+                {variant === "login" ? 'Sign in' : 'Register'}
+              </Button>
+            </div>
+          </form>
+
+          {/* Separator */}
+          <div className="mt-6">
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-300" />
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-2 bg-gray-100 sm:bg-white text-gray-500">
+                  {variant === "login" ? 'Or continue with' : 'Or sign in with'}
+                </span>
+              </div>
+            </div>
+
+            <div className="mt-6 flex gap-2">
+              <AuthSocialButton
+                onClick={() => socialAction('github')}
+                variant='github'
+                disabled={isLoading}
+              />
+              <AuthSocialButton
+                onClick={() => socialAction('google')}
+                variant='google'
+                disabled={isLoading}
+              />
+            </div>
+          </div>
+
+          <div className="flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500">
+            <div>
+              { variant === 'login' ? 'New to Together?' : 'Already have an account?' }
+            </div>
+            <div
+              onClick={toggleVariant}
+              className="underline cursor-pointer transition-all ease-in-out hover:text-emerald-900"
             >
-              {isLoading && <Spinner />}
-              {variant === "login" ? 'Sign in' : 'Register'}
-            </Button>
-          </div>
-        </form>
-
-        {/* Separator */}
-        <div className="mt-6">
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300" />
+              { variant === 'login' ? 'Create an account' : 'Sign in' }
             </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-gray-100 sm:bg-white text-gray-500">
-                {variant === "login" ? 'Or continue with' : 'Or sign in with'}
-              </span>
-            </div>
-          </div>
-
-          <div className="mt-6 flex gap-2">
-            <AuthSocialButton
-              onClick={() => socialAction('github')}
-              variant='github'
-              disabled={isLoading}
-            />
-            <AuthSocialButton
-              onClick={() => socialAction('google')}
-              variant='google'
-              disabled={isLoading}
-            />
-          </div>
-        </div>
-
-        <div className="flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500">
-          <div>
-            { variant === 'login' ? 'New to Together?' : 'Already have an account?' }
-          </div>
-          <div
-            onClick={toggleVariant}
-            className="underline cursor-pointer transition-all ease-in-out hover:text-emerald-900"
-          >
-            { variant === 'login' ? 'Create an account' : 'Sign in' }
           </div>
         </div>
       </div>
-    </div>
     </>
   );
 }
