@@ -13,7 +13,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://together.vercel.app',
+    url: 'https://together-chat.vercel.app',
     title: "Together - Home",
     siteName: 'Together',
     description: "Cultivating Conversations, Crafting Connections",

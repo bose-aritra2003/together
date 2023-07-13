@@ -6,7 +6,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://together.vercel.app/auth',
+    url: 'https://together-chat.vercel.app/auth',
     title: "Together - Auth",
     siteName: 'Together',
     description: "Authentication page",
