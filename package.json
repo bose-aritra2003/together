@@ -12,7 +12,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.14",
     "@next-auth/prisma-adapter": "^1.0.6",
-    "@prisma/client": "4.14.0",
+    "@prisma/client": "5.0.0",
     "@tailwindcss/forms": "^0.5.3",
     "@types/node": "20.1.4",
     "@types/react": "18.2.6",
@@ -48,6 +48,6 @@
     "@types/lodash": "^4.14.194",
     "@types/sentiment": "^5.0.1",
     "encoding": "^0.1.13",
-    "prisma": "^4.14.1"
+    "prisma": "^5.0.0"
   }
 }
